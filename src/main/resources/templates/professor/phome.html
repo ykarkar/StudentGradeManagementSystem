@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeLeaf.org"
+	xmlns:sec="https://www.thymeLeaf.org/thymeLeaf-extras-springsecurity5"	>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body style="text-align: center;">
+<h2 style="text-align: center;">Welcome [[${name}]]</h2>
+<nav class="navbar navbar-expand-lg navbar-light  bg-primary">
+  <a class="navbar-brand" href="/professor">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+       <a class="nav-item nav-link" href="/createNewStudent">Create New Student</a>
+        <a class="nav-item nav-link" href="/viewAllStudent">View All the Students</a>
+    </div>
+  </div>
+  <form action="#" th:action="@{/logout}" method="post">
+	<input class="btn btn-warning" type="submit" value="Logout">
+    </form>
+</nav>
+
+
+<br><br>
+<div style="text-align: center;">
+	<a href="/createNewStudent"><button class="btn btn-success">Create New Students</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/viewAllStudent"><button class="btn btn-success">View all Students</button></a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeLeaf.org"
+	xmlns:sec="https://www.thymeLeaf.org/thymeLeaf-extras-springsecurity5"	>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body style="text-align: center;">
+<h2 style="text-align: center;">[[${name}]]'s Detail</h2>
+<nav class="navbar navbar-expand-lg navbar-light  bg-primary">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  </div>
+  <form action="#" th:action="@{/logout}" method="post">
+	<input class="btn btn-warning" type="submit" value="Logout">
+    </form>
+</nav>
+<table border="1"  class="table table-bordered">
+	<tr class="thead-dark">
+		<th>Name</th>
+		<th>StudentID</th>
+		<th>Exercises(10%)</th>
+		<th>Assignment1(5%)</th>
+		<th>Assignment2(5%)</th>
+		<th>Midterm(30%)</th>
+		<th>FinalExam(35%)</th>
+		<th>FinalProject(15%)</th>
+		<th>Average</th>
+		<th>Letter Grade</th>
+		
+	</tr>
+
+	<tr th:each="g:${mystudents}">
+		<td th:text="${g.name}"></td>
+		<td th:text="${g.studentid}"></td>
+		<td th:text="${g.Exercises}"></td>
+		<td th:text="${g.Assignment1}"></td>
+		<td th:text="${g.Assignment2}"></td>
+		<td th:text="${g.Midterm}"></td>
+		<td th:text="${g.Finalexam}"></td>
+		<td th:text="${g.Finalproject}"></td>
+		<div th:with="result=${g.Exercises + g.Assignment1 +g.Assignment2 +g.Midterm + g.Finalexam + g.Finalproject}">
+		<td th:text="${result}"></td>
+		<td>
+    		<span th:if="${result} &gt; 89 AND ${result} &lt; 101">A+</span>
+    		<span th:if="${result} &gt; 79 AND ${result} &lt; 90">A</span>
+    		<span th:if="${result} &gt; 74 AND ${result} &lt; 80">B+</span>
+    		<span th:if="${result} &gt; 69 AND ${result} &lt; 75">B</span>
+    		<span th:if="${result} &gt; 64 AND ${result} &lt; 70">C+</span>
+    		<span th:if="${result} &gt; 59 AND ${result} &lt; 65">C</span>
+    		<span th:if="${result} &gt; 49 AND ${result} &lt; 60">D</span>
+    		<span th:if="${result} &gt; -1 AND ${result} &lt; 50">F</span>
+    		
+		</td>
+		</div>
+	
+</tr>
+</table>
+
+</body>
+</html>
